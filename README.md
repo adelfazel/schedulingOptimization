@@ -1,6 +1,94 @@
+# Comments (This is displayed to user)
+Results for optimization
+
+        Frank White
+            Starting at 18/06/2018 05:00:00 till 18/06/2018 13:30:00
+            Starting at 19/06/2018 05:00:00 till 19/06/2018 13:30:00
+            Starting at 20/06/2018 05:00:00 till 20/06/2018 13:30:00
+            Starting at 21/06/2018 05:00:00 till 21/06/2018 13:30:00
+            Starting at 22/06/2018 05:00:00 till 22/06/2018 13:30:00
+        Sally Brown
+            Starting at 18/06/2018 05:00:00 till 18/06/2018 13:30:00
+            Starting at 19/06/2018 05:00:00 till 19/06/2018 13:30:00
+            Starting at 20/06/2018 05:00:00 till 20/06/2018 13:30:00
+            Starting at 21/06/2018 05:00:00 till 21/06/2018 13:30:00
+            Starting at 22/06/2018 05:00:00 till 22/06/2018 13:30:00
+        Dylan Purple
+            Starting at 18/06/2018 05:00:00 till 18/06/2018 13:30:00
+            Starting at 19/06/2018 05:00:00 till 19/06/2018 13:30:00
+            Starting at 20/06/2018 05:00:00 till 20/06/2018 13:30:00
+            Starting at 21/06/2018 05:00:00 till 21/06/2018 13:30:00
+            Starting at 22/06/2018 05:00:00 till 22/06/2018 13:30:00
+        Tom Yellow
+            Starting at 18/06/2018 13:00:00 till 18/06/2018 21:30:00
+            Starting at 19/06/2018 13:00:00 till 19/06/2018 21:30:00
+            Starting at 20/06/2018 13:00:00 till 20/06/2018 21:30:00
+            Starting at 21/06/2018 13:00:00 till 21/06/2018 21:30:00
+            Starting at 22/06/2018 13:00:00 till 22/06/2018 21:30:00
+        Andrew Blue
+            Starting at 18/06/2018 13:00:00 till 18/06/2018 21:30:00
+            Starting at 19/06/2018 13:00:00 till 19/06/2018 21:30:00
+            Starting at 20/06/2018 13:00:00 till 20/06/2018 21:30:00
+            Starting at 21/06/2018 13:00:00 till 21/06/2018 21:30:00
+            Starting at 22/06/2018 13:00:00 till 22/06/2018 21:30:00
+        Sarah Black
+            Starting at 18/06/2018 13:00:00 till 18/06/2018 21:30:00
+            Starting at 19/06/2018 13:00:00 till 19/06/2018 21:30:00
+            Starting at 20/06/2018 13:00:00 till 20/06/2018 21:30:00
+            Starting at 21/06/2018 13:00:00 till 21/06/2018 21:30:00
+            Starting at 22/06/2018 13:00:00 till 22/06/2018 21:30:00
+        Paul Red
+            Starting at 18/06/2018 21:00:00 till 19/06/2018 05:30:00
+            Starting at 20/06/2018 21:00:00 till 21/06/2018 05:30:00
+            Starting at 22/06/2018 21:00:00 till 23/06/2018 05:30:00
+            Starting at 24/06/2018 05:00:00 till 24/06/2018 13:30:00
+        Steven Green
+            Starting at 18/06/2018 21:00:00 till 19/06/2018 05:30:00
+            Starting at 20/06/2018 21:00:00 till 21/06/2018 05:30:00
+            Starting at 22/06/2018 21:00:00 till 23/06/2018 05:30:00
+            Starting at 24/06/2018 05:00:00 till 24/06/2018 13:30:00
+        David Orange
+            Starting at 19/06/2018 21:00:00 till 20/06/2018 05:30:00
+            Starting at 21/06/2018 21:00:00 till 22/06/2018 05:30:00
+            Starting at 23/06/2018 05:00:00 till 23/06/2018 13:30:00
+            Starting at 24/06/2018 05:00:00 till 24/06/2018 13:30:00
+        Rachel Cyan Can
+            Starting at 19/06/2018 21:00:00 till 20/06/2018 05:30:00
+            Starting at 21/06/2018 21:00:00 till 22/06/2018 05:30:00
+            Starting at 23/06/2018 05:00:00 till 23/06/2018 13:30:00
+            Starting at 24/06/2018 13:00:00 till 24/06/2018 21:30:00
+        John Magenta-Rose
+            Starting at 23/06/2018 05:00:00 till 23/06/2018 13:30:00
+            Starting at 24/06/2018 13:00:00 till 24/06/2018 21:30:00
+        Ashley Teal
+            Starting at 23/06/2018 13:00:00 till 23/06/2018 21:30:00
+            Starting at 24/06/2018 13:00:00 till 24/06/2018 21:30:00
+        Emily Grey
+            Starting at 23/06/2018 13:00:00 till 23/06/2018 21:30:00
+            Starting at 24/06/2018 21:00:00 till 25/06/2018 05:30:00
+
+Back 
+
+# Comments
+# related to csv files
+The employee file does not contain sufficient identifers and links to contact details. They don't have titles either. I can see in some applications they can pose problems.
+# Comment on shifts:
+My program does not check whether a single shift is strictly viable, that is exceeds legal limits in itself. 
+Shifts are given in format of date, start and end date and breaktime is not specified either. Better way is to specify startdate and end date as full dates, I assumed if start is 9pm and end is 5am, it is a nightshift. But it could be a simple mistake. 
+# Other assumptions
+The scheduling task does at all attempt to make things 'fair'. That is not a design consideration. Nor it takes into account the potencial for penalty rates if there some shifts cannot be taken by any employee. 
+Shifts are assumed not to be breable into multiple sub-shifts. That is one big assumption. 
+# Time ran out! Things I wish I had time to do
+The delivrable does not include rest api support. I have similar project in this repo called "sqlalchemytest" which is written in flask and supports rest api. 
+# Also given that I am talking to a recruiter, I did not ask any questions regarding my assumptions, but there were plenty. If it was an actual cilent I would have clearly asked for several clarifications. 
+
+
+
+
+
 # Back End Developer Exercise
 
-The aim of this exercise is to simulate real working conditions to provide context for a code/design review session. The follow up review session will focus on your reasons for database/API design and pseudo-code/code implementation. As such it isn’t necessary to build a complete implementation, however having some runnable code is recommended (preferably in Python).
+The aim of this exercise is to simulate real working conditions to provide context for a code/design review session. The follow up review session will focus on your reasons for database/API design and pseudo-code/code implementation. As such it isnâ€™t necessary to build a complete implementation, however having some runnable code is recommended (preferably in Python).
 
 The suggested time to spend on this exercise is at least 2 hours.
 
@@ -49,3 +137,5 @@ What you deliver is up to you, some suggestions based on our current practices a
 Please create your solution in a fork off this repo. When you're ready to share your solution with us, email a link to your recruiter or Biarri contact.
 
 On completion, if there are additional things you think you could have done better/did not have enough time to complete, feel free to compile a quick list and bring it to the technical interview to help remind yourself during the discussion.
+
+
