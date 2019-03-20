@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class fileIdentifier(models.Model):
     uniqueIdentifier = models.CharField(max_length=50, primary_key=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -11,29 +12,25 @@ class fileIdentifier(models.Model):
 class Employee(models.Model):
     # bad idenfier, could easily create conflict
     # lacks title, this app wouldnt work for gov or places where people with
+    # contact details should be hear
     Identifier = models.ForeignKey(fileIdentifier, on_delete = models.CASCADE, related_name = "EmployeeByIdentifier")
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
-    class Meta:
-        unique_together = ('firstname', 'lastname', 'Identifier')
 
     def __str__(self):
         return f"firstname: {self.firstname} lastname: {self.lastname}"
 
 
 class Shifts(models.Model):
+    # what about a shift that violates rules already ?
+    # starttime and endtime should be complete in %Y%m%d %I%
     Identifier=models.ForeignKey(fileIdentifier, on_delete=models.CASCADE, related_name = "ShiftsByIdentifier")
-    startDate = models.DateField()
-    endDate = models.DateField()
+    startDate = models.DateTimeField()
+    endDate = models.DateTimeField()
     breaktime = models.IntegerField()
+    
+    # assignedEmployee = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name = 'EmployeeByShift', blank=True, null=True )
+
 
     def __str__(self):
-        return f"day: {self.day} startTime: {self.startTime} endTime: {self.breaktime}"
-
-
-class result(models.Model):
-    Identifier = models.ForeignKey(fileIdentifier, on_delete = models.CASCADE, related_name = "ResultByIdentifier")
-    Employee = models.ForeignKey(Employee, on_delete = models.CASCADE, related_name = "ResultByEmployee")
-    Shifts = models.ForeignKey(Shifts, on_delete = models.CASCADE, related_name = "ResultByIdentifier")
-    def __str__(self):
-        return f"Identifier: {self.Identifier} Employee: {self.Employee} Shifts: {self.Shifts}"
+        return f"startDate: {self.startDate} endDate: {self.endDate}"

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block body %}
+<h1>Welcome to the roaster website </h1>
+<div>
+	<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+		<table>
+			{{ form }}
+		</table>
+    <button type="submit">Upload</button>
+  </form>
+</div>
+<div>
+	<ul>
+	{% for message in messages.info %}
+		<li> {{ message }} </li>
+	{% endfor %}
+</ul>
+</div><div>
+{% if messages.employeeFile %}
+<h3>Employee file problems</h3>
+{% endif %}
+{% for message in messages.employeeFile %}
+ 	{{ message }}
+{% endfor %}
+</div><div>
+{% if messages.Shifts %}
+<h3>Shifts file problems</h3>
+{% endif %}
+{% for message in messages.shiftFile %}
+	{{ message }}
+{% endfor %}
+</div>
+<div>
+		<form method="post" action="result">
+	    {% csrf_token %}
+				{{ resultForm }}
+			<button type="submit">Get Result</button>
+	  </form>
+</div>
+{% endblock %}

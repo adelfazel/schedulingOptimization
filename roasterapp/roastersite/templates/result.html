@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block body %}
+<h1>Results for optimization </h1>
+<div>
+
+<ol>
+	<ul>
+	{% for employee, shiftList in employeeShift.items %}
+		<li> {{ employee.firstname }} {{ employee.lastname }} </li>
+			 <ol>
+			 {% for shift in shiftList %}
+			 		<li>Starting at {{ shift.startDate|date:"d/m/Y H:i:s" }} till {{ shift.endDate|date:"d/m/Y H:i:s" }}
+					</li>
+			 {%endfor%}
+		 	 </ol>
+	{% endfor %}
+	</ul>
+<ol>
+
+</div
+<div>
+	<a href="index">Back</a>
+</div>
+{% endblock %}

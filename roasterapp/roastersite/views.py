@@ -1,12 +1,13 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from .models import fileIdentifier, Shifts, Employee
-from .forms import uploadFileForm
+from .forms import uploadFileForm, resultForm
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 import csv
 from datetime import datetime
+from .solver import solver
 
 def validate_employee(filename):
     csvfile = open(f"{settings.MEDIA_ROOT}/{filename}",'r',newline='',encoding='utf-8-sig')
@@ -46,7 +47,6 @@ def populate_Employee(filename, newEntry):
     csvfile = open(f"{settings.MEDIA_ROOT}/{filename}",'r',newline='',encoding='utf-8-sig')
     reader = csv.DictReader(csvfile)
     for row in reader:
-        print(row)
         e = Employee(Identifier=newEntry, firstname=row['First Name'], lastname=row['Last Name'])
         e.save()
 
@@ -60,21 +60,20 @@ def populate_Shift(filename, newEntry):
         if endTime<startTime:
             endTime=endTime.replace(day=endTime.day+1)
         brk = int(row['Break'])
-        e = Shifts(Identifier=newEntry, startDate=startTime, endDate=endTime,breaktime=brk)
-        e.save()
+        s = Shifts(Identifier=newEntry, startDate=startTime, endDate=endTime,breaktime=brk)
+        s.save()
 
 
-def populate_database(id, shiftFile , employeeFile):
+def populate_database(id, shiftFile, employeeFile):
     newEntry = populate_fileIdentifier(id)
     populate_Employee(employeeFile, newEntry)
     populate_Shift(shiftFile, newEntry)
 
 
-
-
 def index(request):
     context = {}
     context["form"] = uploadFileForm
+    context["resultForm"]= resultForm
     context["messages"] = {}
     context["messages"]["employeeFile"] = []
     context["messages"]["shiftFile"] = []
@@ -98,10 +97,20 @@ def index(request):
                 if not context["messages"]["employeeFile"] and not context["messages"]["shiftFile"]:
                     context["messages"]["info"].append("Files uploaded succesfully")
                     populate_database(uniqueIdentifier, shiftFile_filename,employeeFile_filename)
-
+                    context["resultForm"]= resultForm(initial={"uniqueIdentifier":uniqueIdentifier})
                 else:
                     fs.delete(shiftFile_filename)
                     fs.delete(employeeFile_filename)
         else:
             context["messages"]["info"].append(form.errors)
     return render(request, 'welcome.html', context)
+
+
+def result(request):
+    context = {}
+    form = resultForm(request.POST)
+    if form.is_valid():
+        uniqueIdentifier = form.cleaned_data['uniqueIdentifier']
+        result = solver(uniqueIdentifier)
+        context["employeeShift"]=result
+        return render(request, 'result.html', context)
