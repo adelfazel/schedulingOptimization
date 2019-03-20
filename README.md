@@ -80,7 +80,7 @@ The scheduling task does at all attempt to make things 'fair'. That is not a des
 Shifts are assumed not to be breable into multiple sub-shifts. That is one big assumption. 
 # Time ran out! Things I wish I had time to do
 The delivrable does not include rest api support. I have similar project in this repo called "sqlalchemytest" which is written in flask and supports rest api. 
-# Also given that I am talking to a recruiter, I did not ask any questions regarding my assumptions, but there were plenty. If it was an actual cilent I would have clearly asked for several clarifications. 
+# I did not ask any questions regarding my assumptions. :( Time ran out
 
 
 
