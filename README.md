@@ -85,13 +85,6 @@ The delivrable does not include rest api support. I have similar project in this
 
 
 
-
-# Back End Developer Exercise
-
-The aim of this exercise is to simulate real working conditions to provide context for a code/design review session. The follow up review session will focus on your reasons for database/API design and pseudo-code/code implementation. As such it isn’t necessary to build a complete implementation, however having some runnable code is recommended (preferably in Python).
-
-The suggested time to spend on this exercise is at least 2 hours.
-
 ### Instructions
 
 For this challenge, we are looking for you to create the backend for a a simple rostering application. This application would be used for creating, editing and deleting both employees and shifts, and for managing the assignment and re-assignment of shifts to employees. It may also call out to an optimisation engine to assign all the shifts to employees in a least cost way. The tool may be used by a company that has one or multiple locations which need to be managed.
